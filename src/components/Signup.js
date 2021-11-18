@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Signup(props) {
     return (
         <div>
@@ -27,11 +29,8 @@ export default function Signup(props) {
                 type="submit" 
                 value="Login"
             />
-
-            <p>
-                Already have an account? 
-                <a href="#" onClick={() => props.setAuthView('login')}>Login</a>
-            </p>
+            <br/>
+            <Link to="/login">Already have an account? Login</Link>
         </div>
     )
 }

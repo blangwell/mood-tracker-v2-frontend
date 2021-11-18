@@ -1,14 +1,32 @@
+import { useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 export default function Login(props) {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSubmit = async e => {
+        e.preventDefault();
+        try {
+            let response = await axios.post('http://localhost:3000/login', { email, password });
+            console.log(response);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     return (
         <div>
             <h2>Login</h2>
-			<form action="" method="POST">
+			<form onSubmit={ handleSubmit }>
                 <label htmlFor="email">Email</label>
 				<input 
 					type="email" 
 					name="email" 
 					id="email"
 					placeholder="email@site.com"
+                    onChange={ e => setEmail(e.target.value) }
 				/>
                 <label htmlFor="password">Password</label>
 				<input
@@ -16,15 +34,14 @@ export default function Login(props) {
 					name="password"
 					id="password"
 					placeholder="password"
+                    onChange = { e => setPassword(e.target.value) }
 				/>
 				<input 
 					type="submit" 
 					value="Login"
 				/>
 			</form>
-            <p>
-                <a href="#" onClick={() => props.setAuthView('signup')}>Sign up for a new account</a>
-            </p>
+            <Link to="/signup">Sign up for a new account</Link>
         </div>
     )
 }
