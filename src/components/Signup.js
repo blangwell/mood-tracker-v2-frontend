@@ -20,10 +20,10 @@ export default function Signup(props) {
             />
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input
-                type="confirmPassword"
+                type="password"
                 name="confirmPassword"
                 id="confirmPassword"
-                placeholder="confirmPassword"
+                placeholder="confirm password"
             />
             <input 
                 type="submit" 

@@ -14,8 +14,18 @@ export default function Navbar(props) {
                     <Link to="about">About</Link>
                 </li>
                 <li className="navbar__item">
-                    <Link to="auth">Login</Link>
+                    <Link to="login">Login</Link>
                 </li>
+                <li className="navbar__item">
+                    <Link to="signup">Signup</Link>
+                </li>
+								{
+									props.user !== null ? 
+										<li className="navbar__item">
+												<Link to="dashboard">Dashboard</Link>
+										</li>
+								 	: null
+								}
             </ul>
         </div>
     )
