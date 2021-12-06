@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Navbar(props) {
+    const navigate = useNavigate();
+
     return (
         <div className="navbar">
             <ul 
@@ -19,13 +22,27 @@ export default function Navbar(props) {
                 <li className="navbar__item">
                     <Link to="signup">Signup</Link>
                 </li>
-								{
-									props.user !== null ? 
-										<li className="navbar__item">
-												<Link to="dashboard">Dashboard</Link>
-										</li>
-								 	: null
-								}
+                {
+                    props.user !== null ? 
+                        <>
+                            <li className="navbar__item">
+                                    <Link to="dashboard">Dashboard</Link>
+                            </li>
+                            <li className="navbar__item">
+                                    <span 
+                                    style={{
+                                        cursor: 'pointer'
+                                    }}
+                                    onClick={() => {
+                                        props.handleLogout();
+                                        navigate('login');
+                                    }}>Logout</span>
+                            </li>
+
+                        </>
+
+                    : null
+                }
             </ul>
         </div>
     )
