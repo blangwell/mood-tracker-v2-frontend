@@ -8,7 +8,7 @@ export default function Dashboard(props) {
 		axios.get('http://localhost:8000/allmoods')
 		.then(response => {
 			console.log(response);
-			setAllMoods(response);
+			setAllMoods(response.data);
 		})
 	}, []);
 

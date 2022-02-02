@@ -18,17 +18,17 @@ function App() {
   const [currentUser, setCurrentUser] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  useEffect(() => {
-    let token;
-    if (!localStorage.getItem('jwtToken')) {
-      setIsAuthenticated(false);
-    } else {
-      token = jwt_decode(localStorage.getItem('jwtToken'));
-      setAuthHeader(localStorage.jwtToken);
-      setCurrentUser(token);
-      setIsAuthenticated(true);
-    }
-  }, []);
+  // useEffect(() => {
+  //   let token;
+  //   if (!localStorage.getItem('jwtToken')) {
+  //     setIsAuthenticated(false);
+  //   } else {
+  //     token = jwt_decode(localStorage.getItem('jwtToken'));
+  //     setAuthHeader(localStorage.jwtToken);
+  //     setCurrentUser(token);
+  //     setIsAuthenticated(true);
+  //   }
+  // }, []);
 
   const handleLogout = () => {
     if (localStorage.getItem('jwtToken')) {
@@ -47,7 +47,7 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="login" element={<Login setCurrentUser={setCurrentUser} setIsAuthenticated={setIsAuthenticated} />} />
             <Route path="signup" element={<Signup/>} />
-            <Route path="dashboard" element={<Dashboard/>} />
+            <Route path="dashboard" element={<Dashboard/>} currentUser={currentUser} />
           </Route>  
         </Routes>
       </BrowserRouter>
